@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://cgf1mid3masym"]
+[gd_scene load_steps=77 format=3 uid="uid://cgf1mid3masym"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_88ipk"]
 [ext_resource type="Texture2D" uid="uid://c6no4d06flmla" path="res://assets/player/animation_bottom_left/ship_move_bottom_left1.svg" id="2_e31dv"]
@@ -489,6 +489,10 @@ size = Vector2(59.8051, 58.7904)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33syg"]
 size = Vector2(66.8235, 64.7877)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qyc4c"]
+radius = 27.0
+height = 76.0
+
 [node name="Player" type="Area2D" groups=["player"]]
 position = Vector2(635, 355)
 script = ExtResource("1_88ipk")
@@ -499,19 +503,26 @@ sprite_frames = SubResource("SpriteFrames_pa1xj")
 animation = &"idle"
 
 [node name="CollisionShape2DLower" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 12)
 rotation = 0.785398
 scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_j3ryo")
+disabled = true
 
 [node name="CollisionShape2DUpper" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, -1)
 rotation = 0.965167
 scale = Vector2(0.6, 0.6)
 skew = -0.282743
 shape = SubResource("RectangleShape2D_33syg")
+disabled = true
 
 [node name="AimIndicator" parent="." instance=ExtResource("72_gasf2")]
 position = Vector2(0, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_qyc4c")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

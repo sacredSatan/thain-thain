@@ -73,6 +73,14 @@ func _process(delta):
 	position = position.clamp(Vector2.ZERO, screen_size)
 
 
+func handle_being_shot_at():
+	print("player shot")
+	die()
+
+
+func die():
+	queue_free()
+
 func _on_animated_sprite_2d_animation_finished():
 	if($AnimatedSprite2D.animation.ends_with("transition")):
 		$AnimatedSprite2D.animation = $AnimatedSprite2D.animation.trim_suffix("_transition")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://p7ud4b5m32jd"]
+[gd_scene load_steps=15 format=3 uid="uid://p7ud4b5m32jd"]
 
 [ext_resource type="Texture2D" uid="uid://b6q7quwf8goht" path="res://assets/enemies/bunty/bunty_cross_1.png" id="1_56ywv"]
 [ext_resource type="Script" path="res://enemies/bunty.gd" id="1_jw1gs"]
 [ext_resource type="Texture2D" uid="uid://ckc3pf8rbbcrf" path="res://assets/enemies/bunty/bunty_cross_2.png" id="2_k5hfh"]
+[ext_resource type="PackedScene" uid="uid://bmwoo0kpnly3w" path="res://bullet.tscn" id="2_wlejq"]
 [ext_resource type="Texture2D" uid="uid://dc4kmx7rnmuwu" path="res://assets/enemies/bunty/bunty_cross_3.png" id="3_5caxg"]
 [ext_resource type="Texture2D" uid="uid://cn2nqoxlj0vg4" path="res://assets/enemies/bunty/bunty_cross_4.png" id="4_3i4pa"]
 [ext_resource type="Texture2D" uid="uid://dws7syur4wgbr" path="res://assets/enemies/bunty/bunty_cross_5.png" id="5_a2ysh"]
@@ -58,9 +59,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8q78h"]
 size = Vector2(43, 45)
 
-[node name="Bunty" type="RigidBody2D"]
+[node name="Bunty" type="RigidBody2D" groups=["enemy"]]
 gravity_scale = 2.66454e-15
 script = ExtResource("1_jw1gs")
+bullet_scene = ExtResource("2_wlejq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
@@ -68,10 +70,48 @@ sprite_frames = SubResource("SpriteFrames_is5qr")
 animation = &"bunty_cross"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_8q78h")
 
 [node name="VariantTimer" type="Timer" parent="."]
+
+[node name="GunPlus" type="Node2D" parent="."]
+
+[node name="GunPlus1" type="Node2D" parent="GunPlus"]
+position = Vector2(35, 2.08165e-12)
+
+[node name="GunPlus2" type="Node2D" parent="GunPlus"]
+position = Vector2(-35, 2.08165e-12)
+rotation = 3.14159
+
+[node name="GunPlus3" type="Node2D" parent="GunPlus"]
+position = Vector2(2.08165e-12, -30)
+rotation = 4.71239
+
+[node name="GunPlus4" type="Node2D" parent="GunPlus"]
+position = Vector2(2.08165e-12, 35)
+rotation = 1.5708
+
+[node name="GunCross" type="Node2D" parent="."]
+
+[node name="GunCross1" type="Node2D" parent="GunCross"]
+position = Vector2(25, 25)
+rotation = 0.785398
+
+[node name="GunCross2" type="Node2D" parent="GunCross"]
+position = Vector2(-25, 25)
+rotation = 2.35619
+
+[node name="GunCross3" type="Node2D" parent="GunCross"]
+position = Vector2(-25, -25)
+rotation = 3.92699
+
+[node name="GunCross4" type="Node2D" parent="GunCross"]
+position = Vector2(25, -25)
+rotation = 5.49779
+
+[node name="FireRateTimer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="VariantTimer" to="." method="_on_timer_timeout"]
