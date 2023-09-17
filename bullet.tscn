@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmwoo0kpnly3w"]
+
+[ext_resource type="Texture2D" uid="uid://b50517ijbnigg" path="res://assets/bullets/bullet1.png" id="1_6r8ju"]
+[ext_resource type="Script" path="res://bullet.gd" id="1_gwm7e"]
+[ext_resource type="Texture2D" uid="uid://bbys6w4t6s8gv" path="res://assets/bullets/bullet2.png" id="2_6b5fq"]
+[ext_resource type="Texture2D" uid="uid://dayrkaompwypj" path="res://assets/bullets/bullet3.png" id="3_3qrcv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmh1w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6r8ju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6b5fq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3qrcv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mxn66"]
+radius = 6.08276
+
+[node name="Bullet" type="RigidBody2D"]
+mass = 0.01
+gravity_scale = 2.66454e-15
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_gwm7e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_xmh1w")
+frame_progress = 0.902643
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mxn66")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

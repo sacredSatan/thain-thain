@@ -1,0 +1,75 @@
+[gd_scene load_steps=14 format=3 uid="uid://cgndpcxt38yvi"]
+
+[ext_resource type="Script" path="res://aim_indicator.gd" id="1_0agtp"]
+[ext_resource type="Texture2D" uid="uid://tnvgnw3saui6" path="res://assets/aim_indicator/aim_indicator1.png" id="1_e5ywa"]
+[ext_resource type="PackedScene" uid="uid://bmwoo0kpnly3w" path="res://bullet.tscn" id="2_vag6i"]
+[ext_resource type="Texture2D" uid="uid://cnahi2wbjcoax" path="res://assets/aim_indicator/aim_indicatorx2.png" id="3_r0b6l"]
+[ext_resource type="Texture2D" uid="uid://h52qovbdy6uc" path="res://assets/aim_indicator/aim_indicatorx3.png" id="4_hangb"]
+[ext_resource type="Texture2D" uid="uid://dj4uepusdvbyd" path="res://assets/aim_indicator/aim_indicatorx4.png" id="5_mnvs1"]
+[ext_resource type="Texture2D" uid="uid://dqiilsag5ku0h" path="res://assets/aim_indicator/aim_indicatorx5.png" id="6_32xhb"]
+[ext_resource type="Texture2D" uid="uid://cf838e6o1x464" path="res://assets/aim_indicator/aim_indicatorxyzw1.png" id="8_teqbp"]
+[ext_resource type="Texture2D" uid="uid://d2crcull1g3nt" path="res://assets/aim_indicator/aim_indicatorxyzw2.png" id="9_mo7vi"]
+[ext_resource type="Texture2D" uid="uid://cyndkg61oalmw" path="res://assets/aim_indicator/aim_indicatorxyzw3.png" id="10_kjhvr"]
+[ext_resource type="Texture2D" uid="uid://dbjhr6n08jf50" path="res://assets/aim_indicator/aim_indicatorxyzw4.png" id="11_nf4vw"]
+[ext_resource type="Texture2D" uid="uid://beqoct3yk7xra" path="res://assets/aim_indicator/aim_indicatorxyzw5.png" id="12_ooasu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7qmjw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_teqbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mo7vi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kjhvr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nf4vw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ooasu")
+}],
+"loop": true,
+"name": &"aim_indicator_draw",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e5ywa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r0b6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hangb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mnvs1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_32xhb")
+}],
+"loop": true,
+"name": &"aim_indicator_draw_dashed",
+"speed": 9.0
+}]
+
+[node name="AimIndicator" type="Node2D"]
+script = ExtResource("1_0agtp")
+bullet_scene = ExtResource("2_vag6i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_7qmjw")
+animation = &"aim_indicator_draw"
+
+[node name="Gun" type="Node2D" parent="."]
+position = Vector2(35, 2.08165e-12)
+
+[node name="FireRateTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

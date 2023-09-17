@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://cgf1mid3masym"]
+[gd_scene load_steps=76 format=3 uid="uid://cgf1mid3masym"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_88ipk"]
 [ext_resource type="Texture2D" uid="uid://c6no4d06flmla" path="res://assets/player/animation_bottom_left/ship_move_bottom_left1.svg" id="2_e31dv"]
@@ -71,6 +71,7 @@
 [ext_resource type="Texture2D" uid="uid://c85jo3dvd34st" path="res://assets/player/animation_up/ship_move_up_transition1.svg" id="69_ppwcc"]
 [ext_resource type="Texture2D" uid="uid://buk2yibksfevm" path="res://assets/player/animation_up/ship_move_up_transition2.svg" id="70_f7t3r"]
 [ext_resource type="Texture2D" uid="uid://cdj1pmkmfdsb4" path="res://assets/player/animation_up/ship_move_up_transition3.svg" id="71_gc70k"]
+[ext_resource type="PackedScene" uid="uid://cgndpcxt38yvi" path="res://aim_indicator.tscn" id="72_gasf2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pa1xj"]
 animations = [{
@@ -488,10 +489,9 @@ size = Vector2(59.8051, 58.7904)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33syg"]
 size = Vector2(66.8235, 64.7877)
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" groups=["player"]]
 position = Vector2(635, 355)
 script = ExtResource("1_88ipk")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
@@ -510,5 +510,8 @@ rotation = 0.965167
 scale = Vector2(0.6, 0.6)
 skew = -0.282743
 shape = SubResource("RectangleShape2D_33syg")
+
+[node name="AimIndicator" parent="." instance=ExtResource("72_gasf2")]
+position = Vector2(0, -15)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://dmbn2plo36lsv"]
+
+[ext_resource type="Script" path="res://background.gd" id="1_igcav"]
+[ext_resource type="Texture2D" uid="uid://b5dnribaucp8c" path="res://assets/background/static_background3x2.png" id="3_8jmhi"]
+[ext_resource type="Texture2D" uid="uid://de3b4hurpsdip" path="res://assets/background/static_background3x3.png" id="4_h6qma"]
+[ext_resource type="Texture2D" uid="uid://b7it52ur4lpjc" path="res://assets/background/static_background3x4.png" id="5_2bi5c"]
+[ext_resource type="Texture2D" uid="uid://85063g14jt5c" path="res://assets/background/static_background3x5.png" id="6_ieomf"]
+[ext_resource type="Texture2D" uid="uid://d1jifd6vmw8g7" path="res://assets/background/static_background3x1.png" id="7_cpp3l"]
+[ext_resource type="Texture2D" uid="uid://b4fr85bh81lgq" path="res://assets/background/parallax_background1.png" id="7_x333g"]
+[ext_resource type="Texture2D" uid="uid://s51tgw2dd2nk" path="res://assets/background/static_background3x6.png" id="7_y6sio"]
+[ext_resource type="Texture2D" uid="uid://q26npft46jn3" path="res://assets/background/static_background3x7.png" id="8_6maay"]
+[ext_resource type="Texture2D" uid="uid://lcbqkjoqos0p" path="res://assets/background/parallax_background2.png" id="8_yu3ii"]
+[ext_resource type="Texture2D" uid="uid://fwd5nbyxll8m" path="res://assets/background/parallax_background3.png" id="9_qv41s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_og6in"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_cpp3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8jmhi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_h6qma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2bi5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ieomf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_y6sio")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6maay")
+}],
+"loop": true,
+"name": &"background_static",
+"speed": 9.0
+}]
+
+[node name="Background" type="ParallaxBackground"]
+script = ExtResource("1_igcav")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -37.0
+offset_top = -29.0
+offset_right = 1321.0
+offset_bottom = 756.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(0.33, 0.33)
+sprite_frames = SubResource("SpriteFrames_og6in")
+animation = &"background_static"
+frame_progress = 0.492406
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+visible = false
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1250, 2.08165e-12)
+
+[node name="Background1" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(640, 360)
+texture = ExtResource("7_x333g")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+visible = false
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1250, 2.08165e-12)
+
+[node name="Background2" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(640, 360)
+texture = ExtResource("8_yu3ii")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+visible = false
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(1255, 2.08165e-12)
+
+[node name="Background3" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(640, 360)
+texture = ExtResource("9_qv41s")

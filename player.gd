@@ -1,4 +1,6 @@
+# consider using a CharacterBody because ship will thrust and drift etc later
 extends Area2D
+
 @export var speed = 400
 var screen_size
 
@@ -21,6 +23,9 @@ func _process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
+	if Input.is_action_pressed("shoot"):
+		$AimIndicator.shoot()
+		
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed

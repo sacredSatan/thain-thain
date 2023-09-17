@@ -1,0 +1,77 @@
+[gd_scene load_steps=14 format=3 uid="uid://p7ud4b5m32jd"]
+
+[ext_resource type="Texture2D" uid="uid://b6q7quwf8goht" path="res://assets/enemies/bunty/bunty_cross_1.png" id="1_56ywv"]
+[ext_resource type="Script" path="res://enemies/bunty.gd" id="1_jw1gs"]
+[ext_resource type="Texture2D" uid="uid://ckc3pf8rbbcrf" path="res://assets/enemies/bunty/bunty_cross_2.png" id="2_k5hfh"]
+[ext_resource type="Texture2D" uid="uid://dc4kmx7rnmuwu" path="res://assets/enemies/bunty/bunty_cross_3.png" id="3_5caxg"]
+[ext_resource type="Texture2D" uid="uid://cn2nqoxlj0vg4" path="res://assets/enemies/bunty/bunty_cross_4.png" id="4_3i4pa"]
+[ext_resource type="Texture2D" uid="uid://dws7syur4wgbr" path="res://assets/enemies/bunty/bunty_cross_5.png" id="5_a2ysh"]
+[ext_resource type="Texture2D" uid="uid://cbfrrlbboarko" path="res://assets/enemies/bunty/bunty_plus_1.png" id="6_tym1o"]
+[ext_resource type="Texture2D" uid="uid://cc8tggck7niwj" path="res://assets/enemies/bunty/bunty_plus_2.png" id="7_xye0d"]
+[ext_resource type="Texture2D" uid="uid://d0wpuk5gckvo" path="res://assets/enemies/bunty/bunty_plus_3.png" id="8_pve1w"]
+[ext_resource type="Texture2D" uid="uid://wi873co3062y" path="res://assets/enemies/bunty/bunty_plus_4.png" id="9_qiya8"]
+[ext_resource type="Texture2D" uid="uid://rjm6cdubg8qr" path="res://assets/enemies/bunty/bunty_plus_5.png" id="10_stl36"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_is5qr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_56ywv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_k5hfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5caxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3i4pa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a2ysh")
+}],
+"loop": true,
+"name": &"bunty_cross",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_tym1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xye0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pve1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qiya8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_stl36")
+}],
+"loop": true,
+"name": &"bunty_plus",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8q78h"]
+size = Vector2(43, 45)
+
+[node name="Bunty" type="RigidBody2D"]
+gravity_scale = 2.66454e-15
+script = ExtResource("1_jw1gs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_is5qr")
+animation = &"bunty_cross"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_8q78h")
+
+[node name="VariantTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="VariantTimer" to="." method="_on_timer_timeout"]
