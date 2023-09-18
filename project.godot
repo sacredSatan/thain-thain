@@ -27,7 +27,7 @@ window/stretch/mode="canvas_items"
 
 [editor]
 
-movie_writer/movie_file="/Users/nihar/code/personal/godot/thain-thain/.movies/latest.avi"
+movie_writer/movie_file="/Users/nihar/code/personal/godot/thain-thain/localstuff/latest.avi"
 version_control/default_gravity_vector=Vector2(2.08165e-12, 2.08165e-12)
 
 [input]

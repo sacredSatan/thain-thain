@@ -29,6 +29,9 @@ func shoot():
 	if can_shoot:
 		var bullet = bullet_scene.instantiate()
 		if shooter_collision_layer:
+			# setting the layer too makes it so that player's bullets can kill enemy's bullets
+			# ramayan style
+			bullet.set_collision_layer(bullet.get_collision_layer() + shooter_collision_layer)
 			bullet.set_collision_mask(bullet.get_collision_mask() - shooter_collision_layer)
 		bullet.variant = bullet_variant
 		bullet.shooter_group = shooter_group

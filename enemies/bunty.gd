@@ -30,12 +30,10 @@ func shoot(times: int):
 		return
 
 	var guns = $GunPlus.get_children() if active_variant == BuntyVariants.PLUS else $GunCross.get_children()
-	
-
-	
 	for gun in guns:
 		var bullet = bullet_scene.instantiate()
 		bullet.set_collision_mask(bullet.get_collision_mask() - bunty_collision_layer)
+		bullet.set_collision_layer(bullet.get_collision_layer() + bunty_collision_layer)
 		bullet.shooter_group = "enemy"
 		bullet.variant = "bullet_plus"
 		bullet.position = gun.get_global_position()
@@ -50,7 +48,6 @@ func shoot(times: int):
 
 func _on_body_entered(body):
 	print("bunty body entered", body)
-	
 
 
 func _on_area_entered(area):
@@ -64,7 +61,6 @@ func handle_being_shot_at():
 
 func die():
 	queue_free()
-	
 
 
 func _on_timer_timeout():
