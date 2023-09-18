@@ -71,5 +71,6 @@ position = Vector2(35, 2.08165e-12)
 
 [node name="FireRateTimer" type="Timer" parent="."]
 wait_time = 0.2
+one_shot = true
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

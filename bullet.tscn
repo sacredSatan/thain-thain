@@ -1,24 +1,57 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmwoo0kpnly3w"]
+[gd_scene load_steps=14 format=3 uid="uid://bmwoo0kpnly3w"]
 
-[ext_resource type="Texture2D" uid="uid://b50517ijbnigg" path="res://assets/bullets/bullet1.png" id="1_6r8ju"]
 [ext_resource type="Script" path="res://bullet.gd" id="1_gwm7e"]
-[ext_resource type="Texture2D" uid="uid://bbys6w4t6s8gv" path="res://assets/bullets/bullet2.png" id="2_6b5fq"]
-[ext_resource type="Texture2D" uid="uid://dayrkaompwypj" path="res://assets/bullets/bullet3.png" id="3_3qrcv"]
+[ext_resource type="Texture2D" uid="uid://b50517ijbnigg" path="res://assets/bullets/bullet_plus1.png" id="2_3i354"]
+[ext_resource type="Texture2D" uid="uid://cg3dob2d54s2j" path="res://assets/bullets/bullet_minus1.png" id="2_vqyl2"]
+[ext_resource type="Texture2D" uid="uid://c1382tamk8rx7" path="res://assets/bullets/bullet_minus2.png" id="3_t0guu"]
+[ext_resource type="Texture2D" uid="uid://bbys6w4t6s8gv" path="res://assets/bullets/bullet_plus2.png" id="3_wgjjg"]
+[ext_resource type="Texture2D" uid="uid://678el1yu6idk" path="res://assets/bullets/bullet_minus3.png" id="4_8kf7j"]
+[ext_resource type="Texture2D" uid="uid://dayrkaompwypj" path="res://assets/bullets/bullet_plus3.png" id="4_f855a"]
+[ext_resource type="Texture2D" uid="uid://cyq68kb1qrp4k" path="res://assets/bullets/bullet_minus4.png" id="5_dhggr"]
+[ext_resource type="Texture2D" uid="uid://d1rx4dtcyio27" path="res://assets/bullets/bullet_minus5.png" id="6_h6gva"]
+[ext_resource type="Texture2D" uid="uid://b38helds84cnv" path="res://assets/bullets/bullet_plus4.png" id="10_dqj0p"]
+[ext_resource type="Texture2D" uid="uid://cadsfo3aqe0kw" path="res://assets/bullets/bullet_plus5.png" id="11_eis5a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xmh1w"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_6r8ju")
+"texture": ExtResource("2_vqyl2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_6b5fq")
+"texture": ExtResource("3_t0guu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_3qrcv")
+"texture": ExtResource("4_8kf7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dhggr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h6gva")
 }],
 "loop": true,
-"name": &"default",
+"name": &"bullet_minus",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3i354")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wgjjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f855a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_dqj0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_eis5a")
+}],
+"loop": true,
+"name": &"bullet_plus",
 "speed": 8.0
 }]
 
@@ -26,6 +59,8 @@ animations = [{
 radius = 6.08276
 
 [node name="Bullet" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 6
 mass = 0.01
 gravity_scale = 2.66454e-15
 max_contacts_reported = 1
@@ -35,7 +70,7 @@ script = ExtResource("1_gwm7e")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_xmh1w")
-frame_progress = 0.902643
+animation = &"bullet_minus"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mxn66")

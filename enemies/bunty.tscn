@@ -60,6 +60,8 @@ animations = [{
 size = Vector2(43, 45)
 
 [node name="Bunty" type="RigidBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 3
 gravity_scale = 2.66454e-15
 script = ExtResource("1_jw1gs")
 bullet_scene = ExtResource("2_wlejq")
@@ -112,6 +114,10 @@ position = Vector2(25, -25)
 rotation = 5.49779
 
 [node name="FireRateTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="VariantTimer" to="." method="_on_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

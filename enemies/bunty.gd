@@ -9,6 +9,7 @@ enum BuntyVariants {
 	PLUS,
 }
 
+var bunty_collision_layer
 var variant_switch_rate_seconds = 1.5
 var active_variant = BuntyVariants.CROSS
 
@@ -16,6 +17,7 @@ var active_variant = BuntyVariants.CROSS
 func _ready():
 	$VariantTimer.start(variant_switch_rate_seconds)
 	$AnimatedSprite2D.play()
+	bunty_collision_layer = get_collision_layer()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,9 +31,13 @@ func shoot(times: int):
 
 	var guns = $GunPlus.get_children() if active_variant == BuntyVariants.PLUS else $GunCross.get_children()
 	
+
+	
 	for gun in guns:
 		var bullet = bullet_scene.instantiate()
+		bullet.set_collision_mask(bullet.get_collision_mask() - bunty_collision_layer)
 		bullet.shooter_group = "enemy"
+		bullet.variant = "bullet_plus"
 		bullet.position = gun.get_global_position()
 		bullet.rotation_degrees = gun.rotation_degrees + rotation_degrees
 		bullet.apply_central_impulse(Vector2(bullet_speed, 0).rotated(gun.rotation + rotation))
@@ -69,4 +75,8 @@ func _on_timer_timeout():
 		$AnimatedSprite2D.animation = "bunty_plus"
 	
 	shoot(4)
-	$VariantTimer.start(variant_switch_rate_seconds)
+#	$VariantTimer.start(variant_switch_rate_seconds)
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()

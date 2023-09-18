@@ -1,17 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn6j3xyl7t8m6"]
+[gd_scene load_steps=6 format=3 uid="uid://cn6j3xyl7t8m6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_8thy2"]
 [ext_resource type="PackedScene" uid="uid://dmbn2plo36lsv" path="res://background.tscn" id="1_cgj2v"]
 [ext_resource type="PackedScene" uid="uid://cgf1mid3masym" path="res://player.tscn" id="2_rrqjj"]
 [ext_resource type="PackedScene" uid="uid://p7ud4b5m32jd" path="res://enemies/bunty.tscn" id="4_683da"]
 
+[sub_resource type="Curve2D" id="Curve2D_jflxv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1280, 0, 0, 0, 0, 0, 1280, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8thy2")
+bunty_scene = ExtResource("4_683da")
 
 [node name="Background" parent="." instance=ExtResource("1_cgj2v")]
 
 [node name="Player" parent="." instance=ExtResource("2_rrqjj")]
 position = Vector2(650, 342)
 
-[node name="Bunty" parent="." instance=ExtResource("4_683da")]
-position = Vector2(247, 405)
+[node name="EnemySpawnPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_jflxv")
+
+[node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemySpawnPath"]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
