@@ -24,3 +24,11 @@ func _on_body_entered(body):
 			body.handle_being_shot_at()
 		queue_free()
 	
+# I guess all bodies would have this, to let others know how to react if
+# this body collides with them
+func identify_self():
+	return {
+		"type": Constants.NODE_TYPES.BULLET,
+		"shooter_group": shooter_group,
+	}
+	

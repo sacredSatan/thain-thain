@@ -73,6 +73,9 @@ func _process(delta):
 	position = position.clamp(Vector2.ZERO, screen_size)
 
 
+# don't think this should be converted to rigidbody as it'll require
+# time to perfect movement, for now this is good enough, and the 
+# _on_body_entered -> identify_self thing should be good enough for now
 func handle_being_shot_at():
 	print("player shot")
 	die()
@@ -90,3 +93,12 @@ func _on_animated_sprite_2d_animation_finished():
 		$AnimatedSprite2D.animation = "idle";
 		$AnimatedSprite2D.play();
 
+
+
+func _on_body_entered(body):
+	if "identify_self" in body:
+		var body_metadata = body.identify_self()
+		if body_metadata.type == Constants.NODE_TYPES.BULLET:
+			if !is_in_group(body.shooter_group):
+				die()
+	

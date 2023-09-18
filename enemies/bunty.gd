@@ -33,8 +33,8 @@ func shoot(times: int):
 		var bullet = bullet_scene.instantiate()
 		bullet.shooter_group = "enemy"
 		bullet.position = gun.get_global_position()
-		bullet.rotation_degrees = gun.rotation_degrees
-		bullet.apply_central_impulse(Vector2(bullet_speed, 0).rotated(gun.rotation))
+		bullet.rotation_degrees = gun.rotation_degrees + rotation_degrees
+		bullet.apply_central_impulse(Vector2(bullet_speed, 0).rotated(gun.rotation + rotation))
 		get_tree().get_root().add_child(bullet)
 	
 	$FireRateTimer.start(fire_rate)
