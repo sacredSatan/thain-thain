@@ -3,12 +3,18 @@ extends RigidBody2D
 # reuse this for almost all kinds of bullets (I assume auto aim won't work with this)
 
 @export var shooter_group: String
-@export var variant: String
+@export var variant = Constants.BULLET_VARIANTS.MINUS
+
+var animation_map = {
+	Constants.BULLET_VARIANTS.MINUS: "bullet_minus",
+	Constants.BULLET_VARIANTS.PLUS: "bullet_plus",
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if $AnimatedSprite2D.sprite_frames.has_animation(variant):
-		$AnimatedSprite2D.animation = variant
+	var variant_animation = animation_map[variant]
+	if $AnimatedSprite2D.sprite_frames.has_animation(variant_animation):
+		$AnimatedSprite2D.animation = variant_animation
 	
 	$AnimatedSprite2D.play()
 

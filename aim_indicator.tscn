@@ -1,55 +1,84 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgndpcxt38yvi"]
+[gd_scene load_steps=19 format=3 uid="uid://cgndpcxt38yvi"]
 
 [ext_resource type="Script" path="res://aim_indicator.gd" id="1_0agtp"]
-[ext_resource type="Texture2D" uid="uid://tnvgnw3saui6" path="res://assets/aim_indicator/aim_indicator1.png" id="1_e5ywa"]
 [ext_resource type="PackedScene" uid="uid://bmwoo0kpnly3w" path="res://bullet.tscn" id="2_vag6i"]
-[ext_resource type="Texture2D" uid="uid://cnahi2wbjcoax" path="res://assets/aim_indicator/aim_indicatorx2.png" id="3_r0b6l"]
-[ext_resource type="Texture2D" uid="uid://h52qovbdy6uc" path="res://assets/aim_indicator/aim_indicatorx3.png" id="4_hangb"]
-[ext_resource type="Texture2D" uid="uid://dj4uepusdvbyd" path="res://assets/aim_indicator/aim_indicatorx4.png" id="5_mnvs1"]
-[ext_resource type="Texture2D" uid="uid://dqiilsag5ku0h" path="res://assets/aim_indicator/aim_indicatorx5.png" id="6_32xhb"]
-[ext_resource type="Texture2D" uid="uid://cf838e6o1x464" path="res://assets/aim_indicator/aim_indicatorxyzw1.png" id="8_teqbp"]
-[ext_resource type="Texture2D" uid="uid://d2crcull1g3nt" path="res://assets/aim_indicator/aim_indicatorxyzw2.png" id="9_mo7vi"]
-[ext_resource type="Texture2D" uid="uid://cyndkg61oalmw" path="res://assets/aim_indicator/aim_indicatorxyzw3.png" id="10_kjhvr"]
-[ext_resource type="Texture2D" uid="uid://dbjhr6n08jf50" path="res://assets/aim_indicator/aim_indicatorxyzw4.png" id="11_nf4vw"]
-[ext_resource type="Texture2D" uid="uid://beqoct3yk7xra" path="res://assets/aim_indicator/aim_indicatorxyzw5.png" id="12_ooasu"]
+[ext_resource type="Texture2D" uid="uid://ddinykqwwyn3p" path="res://assets/aim_indicator/aim_indicator_arrow_hand_dashed1.png" id="3_igmoa"]
+[ext_resource type="Texture2D" uid="uid://cf838e6o1x464" path="res://assets/aim_indicator/aim_indicator_circular1.png" id="3_y1kih"]
+[ext_resource type="Texture2D" uid="uid://d2crcull1g3nt" path="res://assets/aim_indicator/aim_indicator_circular2.png" id="4_4rpyb"]
+[ext_resource type="Texture2D" uid="uid://75rp7mxv6l4t" path="res://assets/aim_indicator/aim_indicator_arrow_hand_dashed2.png" id="4_ldjmb"]
+[ext_resource type="Texture2D" uid="uid://c5nl62ggtshp0" path="res://assets/aim_indicator/aim_indicator_arrow_hand_dashed3.png" id="5_ij1hx"]
+[ext_resource type="Texture2D" uid="uid://cyndkg61oalmw" path="res://assets/aim_indicator/aim_indicator_circular3.png" id="5_lum5o"]
+[ext_resource type="Texture2D" uid="uid://dbjhr6n08jf50" path="res://assets/aim_indicator/aim_indicator_circular4.png" id="6_co11n"]
+[ext_resource type="Texture2D" uid="uid://bwuiib0cyfcsw" path="res://assets/aim_indicator/aim_indicator_arrow_hand_dashed4.png" id="6_sfy0a"]
+[ext_resource type="Texture2D" uid="uid://dk32l0nj8ogxq" path="res://assets/aim_indicator/aim_indicator_arrow_hand_dashed5.png" id="7_34agi"]
+[ext_resource type="Texture2D" uid="uid://beqoct3yk7xra" path="res://assets/aim_indicator/aim_indicator_circular5.png" id="7_r6w1x"]
+[ext_resource type="Texture2D" uid="uid://tnvgnw3saui6" path="res://assets/aim_indicator/aim_indicator_circular_dashed1.png" id="8_8tljv"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3ejt6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_stde6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y12d4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_81qf6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7qmjw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_teqbp")
+"texture": ExtResource("3_igmoa")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_mo7vi")
+"texture": ExtResource("4_ldjmb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_kjhvr")
+"texture": ExtResource("5_ij1hx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_nf4vw")
+"texture": ExtResource("6_sfy0a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_ooasu")
+"texture": ExtResource("7_34agi")
 }],
 "loop": true,
-"name": &"aim_indicator_draw",
+"name": &"aim_indicator_arrow_hand_dashed",
 "speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_e5ywa")
+"texture": ExtResource("3_y1kih")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_r0b6l")
+"texture": ExtResource("4_4rpyb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_hangb")
+"texture": ExtResource("5_lum5o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_mnvs1")
+"texture": ExtResource("6_co11n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_32xhb")
+"texture": ExtResource("7_r6w1x")
+}],
+"loop": true,
+"name": &"aim_indicator_circular",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_8tljv")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_3ejt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_stde6")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_y12d4")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_81qf6")
 }],
 "loop": true,
 "name": &"aim_indicator_draw_dashed",
@@ -64,7 +93,7 @@ bullet_scene = ExtResource("2_vag6i")
 rotation = 1.5708
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_7qmjw")
-animation = &"aim_indicator_draw"
+animation = &"aim_indicator_arrow_hand_dashed"
 
 [node name="Gun" type="Node2D" parent="."]
 position = Vector2(35, 2.08165e-12)

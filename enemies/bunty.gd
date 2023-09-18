@@ -1,4 +1,5 @@
 extends RigidBody2D
+
 @export var bullet_scene: PackedScene
 @export var bullet_speed = 500
 @export var fire_rate = 0.1
@@ -9,15 +10,15 @@ enum BuntyVariants {
 	PLUS,
 }
 
-var bunty_collision_layer
+var self_collision_layer
 var variant_switch_rate_seconds = 1.5
 var active_variant = BuntyVariants.CROSS
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self_collision_layer = get_collision_layer()
 	$VariantTimer.start(variant_switch_rate_seconds)
 	$AnimatedSprite2D.play()
-	bunty_collision_layer = get_collision_layer()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,10 +33,10 @@ func shoot(times: int):
 	var guns = $GunPlus.get_children() if active_variant == BuntyVariants.PLUS else $GunCross.get_children()
 	for gun in guns:
 		var bullet = bullet_scene.instantiate()
-		bullet.set_collision_mask(bullet.get_collision_mask() - bunty_collision_layer)
-		bullet.set_collision_layer(bullet.get_collision_layer() + bunty_collision_layer)
+		bullet.set_collision_mask(bullet.get_collision_mask() - self_collision_layer)
+		bullet.set_collision_layer(bullet.get_collision_layer() + self_collision_layer)
 		bullet.shooter_group = "enemy"
-		bullet.variant = "bullet_plus"
+		bullet.variant = Constants.BULLET_VARIANTS.PLUS
 		bullet.position = gun.get_global_position()
 		bullet.rotation_degrees = gun.rotation_degrees + rotation_degrees
 		bullet.apply_central_impulse(Vector2(bullet_speed, 0).rotated(gun.rotation + rotation))

@@ -1,5 +1,6 @@
 # consider using a CharacterBody because ship will thrust and drift etc later
 extends Area2D
+class_name Player
 
 @export var speed = 400
 var screen_size
@@ -14,6 +15,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$AimIndicator.look_at(get_global_mouse_position())
+	
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
@@ -83,6 +86,7 @@ func handle_being_shot_at():
 
 func die():
 	queue_free()
+
 
 func _on_animated_sprite_2d_animation_finished():
 	if($AnimatedSprite2D.animation.ends_with("transition")):

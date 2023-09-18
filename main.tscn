@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn6j3xyl7t8m6"]
+[gd_scene load_steps=7 format=3 uid="uid://cn6j3xyl7t8m6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_8thy2"]
 [ext_resource type="PackedScene" uid="uid://dmbn2plo36lsv" path="res://background.tscn" id="1_cgj2v"]
 [ext_resource type="PackedScene" uid="uid://cgf1mid3masym" path="res://player.tscn" id="2_rrqjj"]
 [ext_resource type="PackedScene" uid="uid://p7ud4b5m32jd" path="res://enemies/bunty.tscn" id="4_683da"]
+[ext_resource type="PackedScene" uid="uid://dgdesghafctsg" path="res://enemies/bablu.tscn" id="5_5pgxs"]
 
 [sub_resource type="Curve2D" id="Curve2D_jflxv"]
 _data = {
@@ -14,6 +15,7 @@ point_count = 5
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8thy2")
 bunty_scene = ExtResource("4_683da")
+bablu_scene = ExtResource("5_5pgxs")
 
 [node name="Background" parent="." instance=ExtResource("1_cgj2v")]
 

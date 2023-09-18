@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbjhr6n08jf50"
-path="res://.godot/imported/aim_indicatorxyzw4.png-4f163a5ab093502dd63ab8840d3b2120.ctex"
+uid="uid://c5nl62ggtshp0"
+path="res://.godot/imported/aim_indicator_arrow_hand_dashed3.png-dbadf4defc1de56378aba53305809689.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aim_indicator/aim_indicatorxyzw4.png"
-dest_files=["res://.godot/imported/aim_indicatorxyzw4.png-4f163a5ab093502dd63ab8840d3b2120.ctex"]
+source_file="res://assets/aim_indicator/aim_indicator_arrow_hand_dashed3.png"
+dest_files=["res://.godot/imported/aim_indicator_arrow_hand_dashed3.png-dbadf4defc1de56378aba53305809689.ctex"]
 
 [params]
 

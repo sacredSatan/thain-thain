@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj4uepusdvbyd"
-path="res://.godot/imported/aim_indicatorx4.png-941ccf6f64089e639ebc5623c4ea977c.ctex"
+uid="uid://dy23xrshyfcp5"
+path="res://.godot/imported/bablu_body1.png-4323f745e79860c44765a6d3a8c8201b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aim_indicator/aim_indicatorx4.png"
-dest_files=["res://.godot/imported/aim_indicatorx4.png-941ccf6f64089e639ebc5623c4ea977c.ctex"]
+source_file="res://assets/enemies/bablu/bablu_body1.png"
+dest_files=["res://.godot/imported/bablu_body1.png-4323f745e79860c44765a6d3a8c8201b.ctex"]
 
 [params]
 

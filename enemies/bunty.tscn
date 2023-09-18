@@ -69,7 +69,7 @@ bullet_scene = ExtResource("2_wlejq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_is5qr")
-animation = &"bunty_plus"
+animation = &"bunty_cross"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
