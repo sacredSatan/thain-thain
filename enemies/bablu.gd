@@ -84,9 +84,10 @@ func handle_equation_death():
 
 
 func die():
-	$AnimatedSprite2D.animation = "bablu_death"
-	$AnimatedSprite2D.play()
-	
+	if not $AnimatedSprite2D.animation == "bablu_death":
+		$AnimatedSprite2D.animation = "bablu_death"
+		$AnimatedSprite2D.play()
+		
 	$AimIndicator.hide()
 	$EquationHolder.hide()
 

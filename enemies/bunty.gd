@@ -81,13 +81,20 @@ func handle_bullet_variant_change(variant):
 
 
 func die():
+	if not $AnimatedSprite2D.animation == "bunty_death":
+		$AnimatedSprite2D.animation = "bunty_death"
+		$AnimatedSprite2D.play()
+
 	$EquationHolder.hide()
-	$AnimatedSprite2D.animation = "bunty_death"
+
 	await $AnimatedSprite2D.animation_finished
 	queue_free()
 
 
 func _on_timer_timeout():
+	if $AnimatedSprite2D.animation == "bunty_death":
+		return
+
 	active_variant = BuntyVariants.CROSS if active_variant != BuntyVariants.CROSS else BuntyVariants.PLUS
 	if active_variant == BuntyVariants.CROSS:
 		$AnimatedSprite2D.animation = "bunty_cross"
