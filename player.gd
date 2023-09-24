@@ -5,11 +5,20 @@ class_name Player
 @export var speed = 400
 var screen_size
 
+@export var active_bullet_variant = Constants.BULLET_VARIANTS.PLUS
+@export var active_operator: Constants.SUPPORTED_OPERATORS
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
 	$AnimatedSprite2D.animation = "idle"
 	$AnimatedSprite2D.play()
+#	active_operator = Constants.SUPPORTED_OPERATORS.values().pick_random()
+	active_operator = Constants.SUPPORTED_OPERATORS.DIVISION
+	$EquationHolder.operator = active_operator
+	$EquationHolder.draw_label()
+	
+	$AimIndicator.bullet_variant = active_bullet_variant
 
 
 
@@ -28,6 +37,11 @@ func _process(delta):
 		velocity.y -= 1
 	if Input.is_action_pressed("shoot"):
 		$AimIndicator.shoot()
+		
+	if Input.is_action_just_pressed("cycle_weapon"):
+		active_bullet_variant = Constants.BULLET_VARIANTS.PLUS if active_bullet_variant == Constants.BULLET_VARIANTS.MINUS else Constants.BULLET_VARIANTS.MINUS
+		$AimIndicator.bullet_variant = active_bullet_variant
+		
 		
 
 	if velocity.length() > 0:
@@ -79,8 +93,21 @@ func _process(delta):
 # don't think this should be converted to rigidbody as it'll require
 # time to perfect movement, for now this is good enough, and the 
 # _on_body_entered -> identify_self thing should be good enough for now
-func handle_being_shot_at():
-	print("player shot")
+func handle_being_shot_at(identity):
+	print("player shot", identity)
+	if !is_in_group(identity.shooter_group):
+		if identity.variant == Constants.BULLET_VARIANTS.MINUS:
+			$EquationHolder.decrement_selected_operand()
+		else:
+			$EquationHolder.increment_selected_operand()
+
+
+func handle_equation_operand_switch(operand_num):
+	$EquationHolder.switch_operand(operand_num)
+
+
+func handle_equation_death():
+	print("dbed")
 	die()
 
 
@@ -101,8 +128,8 @@ func _on_animated_sprite_2d_animation_finished():
 
 func _on_body_entered(body):
 	if "identify_self" in body:
-		var body_metadata = body.identify_self()
-		if body_metadata.type == Constants.NODE_TYPES.BULLET:
-			if !is_in_group(body.shooter_group):
-				die()
-	
+		var identity = body.identify_self()
+		if identity.type == Constants.NODE_TYPES.BULLET:
+			handle_being_shot_at(identity)
+			if !is_in_group(identity.shooter_group):
+				body.queue_free()

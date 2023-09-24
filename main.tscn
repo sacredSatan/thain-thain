@@ -19,7 +19,12 @@ bablu_scene = ExtResource("5_5pgxs")
 
 [node name="Background" parent="." instance=ExtResource("1_cgj2v")]
 
+[node name="MainOperandSwitchTimer" type="Timer" parent="."]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("2_rrqjj")]
+unique_name_in_owner = true
 position = Vector2(650, 342)
 
 [node name="EnemySpawnPath" type="Path2D" parent="."]
@@ -27,6 +32,11 @@ curve = SubResource("Curve2D_jflxv")
 
 [node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemySpawnPath"]
 
-[node name="EnemySpawnTimer" type="Timer" parent="."]
+[node name="Bablu" parent="." instance=ExtResource("5_5pgxs")]
+position = Vector2(160, 342)
 
+[node name="Bunty4" parent="." instance=ExtResource("4_683da")]
+position = Vector2(1163, 342)
+
+[connection signal="timeout" from="MainOperandSwitchTimer" to="." method="_on_main_operand_switch_timer_timeout"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

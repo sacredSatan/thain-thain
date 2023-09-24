@@ -31,7 +31,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func _on_body_entered(body):
 	if !body.is_in_group(shooter_group):
 		if "handle_being_shot_at" in body:
-			body.handle_being_shot_at()
+			body.handle_being_shot_at(identify_self())
 		queue_free()
 	
 # I guess all bodies would have this, to let others know how to react if
@@ -39,6 +39,7 @@ func _on_body_entered(body):
 func identify_self():
 	return {
 		"type": Constants.NODE_TYPES.BULLET,
+		"variant": variant,
 		"shooter_group": shooter_group,
 	}
 	

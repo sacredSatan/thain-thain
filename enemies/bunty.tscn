@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://p7ud4b5m32jd"]
+[gd_scene load_steps=16 format=3 uid="uid://p7ud4b5m32jd"]
 
 [ext_resource type="Texture2D" uid="uid://bf1rfgit8c4t3" path="res://assets/enemies/bunty/bunty_cross_1.png" id="1_56ywv"]
 [ext_resource type="Script" path="res://enemies/bunty.gd" id="1_jw1gs"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dssw1lsjl057h" path="res://assets/enemies/bunty/bunty_plus_3.png" id="8_pve1w"]
 [ext_resource type="Texture2D" uid="uid://dtm5vtpwl3wdq" path="res://assets/enemies/bunty/bunty_plus_4.png" id="9_qiya8"]
 [ext_resource type="Texture2D" uid="uid://cw6xgh2jnvqi8" path="res://assets/enemies/bunty/bunty_plus_5.png" id="10_stl36"]
+[ext_resource type="PackedScene" uid="uid://ct48ivhmsaeuq" path="res://equation_holder.tscn" id="13_d5tt2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_is5qr"]
 animations = [{
@@ -59,9 +60,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8q78h"]
 size = Vector2(43, 45)
 
-[node name="Bunty" type="RigidBody2D" groups=["enemy"]]
+[node name="Bunty" type="RigidBody2D" groups=["enemy", "equation_holder"]]
 collision_layer = 4
 collision_mask = 3
+mass = 50.0
 gravity_scale = 2.66454e-15
 script = ExtResource("1_jw1gs")
 bullet_scene = ExtResource("2_wlejq")
@@ -117,6 +119,12 @@ rotation = 5.49779
 one_shot = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="EquationHolder" parent="." instance=ExtResource("13_d5tt2")]
+offset_left = -27.0
+offset_top = 33.0
+offset_right = 29.0
+offset_bottom = 57.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="VariantTimer" to="." method="_on_timer_timeout"]
