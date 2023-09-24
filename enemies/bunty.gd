@@ -19,6 +19,7 @@ var active_variant = BuntyVariants.CROSS
 func _ready():
 	self_collision_layer = get_collision_layer()
 	$VariantTimer.start(variant_switch_rate_seconds)
+	$AnimatedSprite2D.animation = "bunty_cross"
 	$AnimatedSprite2D.play()
 
 
@@ -80,6 +81,9 @@ func handle_bullet_variant_change(variant):
 
 
 func die():
+	$EquationHolder.hide()
+	$AnimatedSprite2D.animation = "bunty_death"
+	await $AnimatedSprite2D.animation_finished
 	queue_free()
 
 

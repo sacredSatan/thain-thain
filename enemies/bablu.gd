@@ -12,6 +12,7 @@ var self_collision_layer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self_collision_layer = get_collision_layer()
+	$AnimatedSprite2D.animation = "bablu_body"
 	$AnimatedSprite2D.play()
 	$AimIndicator.fire_rate = fire_rate
 	$AimIndicator.bullet_speed = bullet_speed
@@ -83,6 +84,13 @@ func handle_equation_death():
 
 
 func die():
+	$AnimatedSprite2D.animation = "bablu_death"
+	$AnimatedSprite2D.play()
+	
+	$AimIndicator.hide()
+	$EquationHolder.hide()
+
+	await $AnimatedSprite2D.animation_finished
 	queue_free()
 
 	

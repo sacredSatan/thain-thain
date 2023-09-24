@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://p7ud4b5m32jd"]
+[gd_scene load_steps=21 format=3 uid="uid://p7ud4b5m32jd"]
 
 [ext_resource type="Texture2D" uid="uid://bf1rfgit8c4t3" path="res://assets/enemies/bunty/bunty_cross_1.png" id="1_56ywv"]
 [ext_resource type="Script" path="res://enemies/bunty.gd" id="1_jw1gs"]
@@ -9,9 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://bpm1nmxopb6" path="res://assets/enemies/bunty/bunty_cross_5.png" id="5_a2ysh"]
 [ext_resource type="Texture2D" uid="uid://duuvvwi5lw1v4" path="res://assets/enemies/bunty/bunty_plus_1.png" id="6_tym1o"]
 [ext_resource type="Texture2D" uid="uid://c47laerydcuy7" path="res://assets/enemies/bunty/bunty_plus_2.png" id="7_xye0d"]
+[ext_resource type="Texture2D" uid="uid://dylkf5msysruw" path="res://assets/enemies/bunty/bunty_death1.png" id="8_nwrf7"]
 [ext_resource type="Texture2D" uid="uid://dssw1lsjl057h" path="res://assets/enemies/bunty/bunty_plus_3.png" id="8_pve1w"]
 [ext_resource type="Texture2D" uid="uid://dtm5vtpwl3wdq" path="res://assets/enemies/bunty/bunty_plus_4.png" id="9_qiya8"]
+[ext_resource type="Texture2D" uid="uid://bykg2pkg7xawc" path="res://assets/enemies/bunty/bunty_death2.png" id="9_t3i5v"]
+[ext_resource type="Texture2D" uid="uid://bnidv1a08656q" path="res://assets/enemies/bunty/bunty_death3.png" id="10_dajf0"]
 [ext_resource type="Texture2D" uid="uid://cw6xgh2jnvqi8" path="res://assets/enemies/bunty/bunty_plus_5.png" id="10_stl36"]
+[ext_resource type="Texture2D" uid="uid://d2rru1w7j0iqe" path="res://assets/enemies/bunty/bunty_death4.png" id="11_tafwd"]
+[ext_resource type="Texture2D" uid="uid://b0oh1ugr8dn6h" path="res://assets/enemies/bunty/bunty_death5.png" id="12_87ne6"]
 [ext_resource type="PackedScene" uid="uid://ct48ivhmsaeuq" path="res://equation_holder.tscn" id="13_d5tt2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_is5qr"]
@@ -34,6 +39,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"bunty_cross",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_nwrf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_t3i5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_dajf0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tafwd")
+}, {
+"duration": 4.0,
+"texture": ExtResource("12_87ne6")
+}],
+"loop": false,
+"name": &"bunty_death",
 "speed": 8.0
 }, {
 "frames": [{
@@ -71,7 +96,7 @@ bullet_scene = ExtResource("2_wlejq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_is5qr")
-animation = &"bunty_cross"
+animation = &"bunty_death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgdesghafctsg"]
+[gd_scene load_steps=18 format=3 uid="uid://dgdesghafctsg"]
 
 [ext_resource type="Texture2D" uid="uid://dy23xrshyfcp5" path="res://assets/enemies/bablu/bablu_body1.png" id="1_60oab"]
 [ext_resource type="Script" path="res://enemies/bablu.gd" id="1_i1ao8"]
@@ -8,7 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://dxeqa17vcexfl" path="res://assets/enemies/bablu/bablu_body4.png" id="4_fovlb"]
 [ext_resource type="Texture2D" uid="uid://cw5cahbt03hcp" path="res://assets/enemies/bablu/bablu_body5.png" id="5_dj3bn"]
 [ext_resource type="PackedScene" uid="uid://cgndpcxt38yvi" path="res://aim_indicator.tscn" id="6_yyfig"]
+[ext_resource type="Texture2D" uid="uid://bg8kf1vfhumyn" path="res://assets/enemies/bablu/bablu_death1.png" id="8_uu140"]
 [ext_resource type="PackedScene" uid="uid://ct48ivhmsaeuq" path="res://equation_holder.tscn" id="9_6x8be"]
+[ext_resource type="Texture2D" uid="uid://hj474vblb774" path="res://assets/enemies/bablu/bablu_death2.png" id="9_ar7v2"]
+[ext_resource type="Texture2D" uid="uid://c64wkp3eewbnx" path="res://assets/enemies/bablu/bablu_death3.png" id="10_nb5yh"]
+[ext_resource type="Texture2D" uid="uid://tjqml810uuwx" path="res://assets/enemies/bablu/bablu_death4.png" id="11_qv0h4"]
+[ext_resource type="Texture2D" uid="uid://54equf0hd5ne" path="res://assets/enemies/bablu/bablu_death5.png" id="12_3eeqx"]
+[ext_resource type="Texture2D" uid="uid://bkw4t6tpbu4gm" path="res://assets/enemies/bablu/bablu_death6.png" id="13_nqmyx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rd6an"]
 animations = [{
@@ -31,6 +37,29 @@ animations = [{
 "loop": true,
 "name": &"bablu_body",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_uu140")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ar7v2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nb5yh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qv0h4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_3eeqx")
+}, {
+"duration": 4.0,
+"texture": ExtResource("13_nqmyx")
+}],
+"loop": false,
+"name": &"bablu_death",
+"speed": 8.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bvq2k"]
@@ -46,7 +75,7 @@ bullet_scene = ExtResource("2_og1tj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_rd6an")
-animation = &"bablu_body"
+animation = &"bablu_death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bvq2k")
