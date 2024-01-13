@@ -32,10 +32,10 @@ func _ready():
 #		print("swtc ", switch_timer)
 	
 	if not operand1:
-		operand1 = randi_range(45, 99)
+		operand1 = randi_range(10, 18)
 	
 	if not operand2:
-		operand2 = randi_range(1, 45)
+		operand2 = randi_range(1, 13)
 
 	if not operator:
 		operator = Constants.SUPPORTED_OPERATORS.values().pick_random()

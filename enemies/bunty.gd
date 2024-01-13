@@ -86,6 +86,8 @@ func die():
 		$AnimatedSprite2D.play()
 
 	$EquationHolder.hide()
+	set_collision_mask(0)
+	set_collision_layer(0)
 
 	await $AnimatedSprite2D.animation_finished
 	queue_free()

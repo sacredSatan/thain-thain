@@ -6,7 +6,7 @@ extends Node2D
 # clean up later
 @export var enemy_spawn_rate = 5
 @export var enemy_speed_min = 150
-@export var enemy_speed_max = 300
+@export var enemy_speed_max = 200
 
 @export var operand_switch_rate = 8
 
